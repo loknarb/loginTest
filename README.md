@@ -1,0 +1,1 @@
+I needed to test out a version of handling user authentication with NextAuth.js and Next.js. I found a few examples, but they were all a bit out of date. So I decided to create a new one, (funny because this one will be out of date aswell 😂).
