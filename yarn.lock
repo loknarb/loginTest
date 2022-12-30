@@ -1069,6 +1069,11 @@
     "@jridgewell/resolve-uri" "3.1.0"
     "@jridgewell/sourcemap-codec" "1.4.14"
 
+"@next-auth/supabase-adapter@^0.2.1":
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/@next-auth/supabase-adapter/-/supabase-adapter-0.2.1.tgz#3bae6bc65677d3e3177b5c224c02802f5a5e51e0"
+  integrity sha512-BlIbBRd8QjdV84h/XH2QuuleZAFcmfRwT0pyvc9iqrVztxmjWOalNRvSA7xsbqsQq9mK16PMmNPRvsDEUAAgfQ==
+
 "@next/env@13.0.7":
   version "13.0.7"
   resolved "https://registry.yarnpkg.com/@next/env/-/env-13.0.7.tgz#7b6ccd9006d3fb57c369e3fb62b28e15324141e9"
