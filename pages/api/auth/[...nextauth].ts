@@ -1,7 +1,9 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 
+// eslint-disable-next-line import/no-default-export
 export default NextAuth({
   providers: [
     // OAuth authentication providers...

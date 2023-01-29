@@ -1,10 +1,11 @@
 import Head from "next/head";
 import { Inter } from "@next/font/google";
-import Header from "../components/main/Header";
-import Body from "../components/main/Body";
+import { Header } from "../components/main/Header";
+import { Body } from "../components/main/Body";
+
 const inter = Inter({ subsets: ["latin"] });
 
-export default function Home() {
+export function Home() {
   return (
     <>
       <Head>
