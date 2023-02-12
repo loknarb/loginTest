@@ -1,15 +1,12 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import NextAuth, { Session } from "next-auth";
+import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google";
 import { SupabaseAdapter } from "@next-auth/supabase-adapter";
 import jwt from "jsonwebtoken";
-// import jwt from "next-auth/jwt";
-interface SessionWithSupabase extends Session {
-  supabaseAccessToken: string;
-}
-// eslint-disable-next-line import/no-default-export
-export default NextAuth({
+import type { NextAuthOptions } from "next-auth";
+
+export const authOptions: NextAuthOptions = {
   providers: [
     // OAuth authentication providers...
     GithubProvider({
@@ -48,7 +45,10 @@ export default NextAuth({
         // eslint-disable-next-line no-param-reassign
         session.supabaseAccessToken = jwt.sign(payload, signInSecret);
       }
-      return session as SessionWithSupabase;
+      return session;
     },
   },
-});
+};
+
+// eslint-disable-next-line import/no-default-export
+export default NextAuth(authOptions);
