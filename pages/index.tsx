@@ -1,10 +1,36 @@
 import Head from "next/head";
 import { Inter } from "@next/font/google";
+import { getServerSession } from "next-auth/next";
+import { IncomingMessage, ServerResponse } from "http";
+import { NextApiRequest } from "next";
+import { authOptions } from "./api/auth/[...nextauth]";
 import { Header } from "../components/main/Header";
 import { Body } from "../components/main/Body";
+import { supabaseAuth } from "../lib/supabaseClient";
 
 const inter = Inter({ subsets: ["latin"] });
 
+export async function getServerSideProps(context: {
+  req: NextApiRequest;
+  res: ServerResponse<IncomingMessage>;
+}) {
+  const session = await getServerSession(context.req, context.res, authOptions);
+  supabaseAuth(session?.supabaseAccessToken);
+  if (!session) {
+    return {
+      redirect: {
+        destination: "/",
+        permanent: false,
+      },
+    };
+  }
+
+  return {
+    props: {
+      session,
+    },
+  };
+}
 export function Home() {
   return (
     <>
