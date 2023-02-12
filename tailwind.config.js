@@ -45,5 +45,6 @@ module.exports = {
       },
     },
   },
-  plugins: [require("@tailwindcss/line-clamp"), require("daisyui")],
+  // eslint-disable-next-line global-require
+  plugins: [require("daisyui"), require("@tailwindcss/line-clamp")],
 };

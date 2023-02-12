@@ -1,6 +1,6 @@
-import create from "zustand";
+import { create } from "zustand";
 
-const useUserAuth = create<{
+export const useUserAuth = create<{
   shown: boolean;
   openModalAuth: () => void;
   closeModalAuth: () => void;
@@ -16,4 +16,3 @@ const useUserAuth = create<{
       shown: false,
     })),
 }));
-export default useUserAuth;
