@@ -32,8 +32,8 @@ export default NextAuth({
   // https://next-auth.js.org/configuration/options
   // https://next-auth.js.org/configuration/providers
   adapter: SupabaseAdapter({
-    url: process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    secret: process.env.SUPABASE_SERVICE_ROLE_KEY!,
+    url: process.env.SUPABASE_URL!,
+    secret: process.env.SUPABASE_ANON_KEY!,
   }),
   callbacks: {
     async session({ session, user }) {
