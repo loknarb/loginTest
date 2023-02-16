@@ -1,7 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import { Database } from "./db.types";
 
-export const supabaseAuth = (supabaseAccessToken?: string) => {
+const supabaseAuth = (supabaseAccessToken?: string) => {
   if (supabaseAccessToken) {
     const supabase = createClient<Database>(
       // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -20,3 +20,5 @@ export const supabaseAuth = (supabaseAccessToken?: string) => {
   }
   throw new Error("No supabase access token");
 };
+
+export default supabaseAuth;
