@@ -1,6 +1,6 @@
 import { create } from "zustand";
 
-export const useUserAuth = create<{
+const useUserAuth = create<{
   shown: boolean;
   openModalAuth: () => void;
   closeModalAuth: () => void;
@@ -16,3 +16,5 @@ export const useUserAuth = create<{
       shown: false,
     })),
 }));
+
+export default useUserAuth;
