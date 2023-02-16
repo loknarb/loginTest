@@ -1,4 +1,3 @@
-import Image from "next/image";
 import React from "react";
 import Button from "./Button";
 
@@ -70,8 +69,8 @@ const Header = () => {
           </ul>
         </div>
       </div> */}
-      <Button name="login" />
-      <Button />
+      <Button name="Login" />
+      <Button name="Logout" />
     </div>
   );
 };

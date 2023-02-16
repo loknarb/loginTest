@@ -1,6 +1,5 @@
 import Head from "next/head";
 import { Inter } from "@next/font/google";
-import { authOptions } from "./api/auth/[...nextauth]";
 import Header from "../components/main/Header";
 import Body from "../components/main/Body";
 

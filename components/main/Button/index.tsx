@@ -5,7 +5,11 @@ interface ButtonProps {
 }
 
 const Button = ({ name }: ButtonProps) => {
-  return <button type="button">{name || "default props"}</button>;
+  return (
+    <button className="btn btn-ghost normal-case text-xl" type="button">
+      {name || "default props"}
+    </button>
+  );
 };
 
 export default Button;
