@@ -1,3 +1,4 @@
+require("dotenv").config();
 const fs = require("fs");
 const { promisify } = require("util");
 const exec = promisify(require("child_process").exec);
