@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config({ path: "./.env.local" });
 const fs = require("fs");
 const { promisify } = require("util");
 const exec = promisify(require("child_process").exec);
