@@ -1,13 +1,16 @@
-require("dotenv").config({ path: "./.env.local" });
-const fs = require("fs");
-const { promisify } = require("util");
-const exec = promisify(require("child_process").exec);
+import dotenv from "dotenv";
+import fs from "fs";
+import { exec } from "child_process";
+import { promisify } from "util";
+import path from "path";
 
-const dbFilePath = "./lib/db.types.ts";
+dotenv.config({ path: "./.env.local" });
 
-async function generateDbTypes() {
+const dbFilePath = path.join(__dirname, "lib/db.types.ts");
+
+export const generateDbTypes = async () => {
   try {
-    const { stdout, stderr } = await exec(
+    const { stdout, stderr } = await promisify(exec)(
       `yarn supabase gen types typescript --db-url postgres://postgres:${process.env.SUPABASE_DB_PW}@db.${process.env.SUPABASE_DB_URL}.supabase.co:6543/postgres > ${dbFilePath}`
     );
     console.log("stdout:", stdout);
@@ -15,9 +18,9 @@ async function generateDbTypes() {
   } catch (err) {
     console.error(err);
   }
-}
+};
 
-function modifyDbTypes() {
+export const modifyDbTypes = () => {
   // Read the contents of the db.types.ts file
   const contents = fs.readFileSync(dbFilePath, "utf8");
 
@@ -32,11 +35,11 @@ function modifyDbTypes() {
 
   // Overwrite the input file with the modified text
   fs.writeFileSync(dbFilePath, contentsWithoutLastTwoLines, "utf8");
-}
+};
 
-async function run() {
+const run = async () => {
   await generateDbTypes();
   modifyDbTypes();
-}
+};
 
 run();
