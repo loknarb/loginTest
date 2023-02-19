@@ -2,11 +2,10 @@ import dotenv from "dotenv";
 import fs from "fs";
 import { exec } from "child_process";
 import { promisify } from "util";
-import path from "path";
 
 dotenv.config({ path: "./.env.local" });
 
-const dbFilePath = path.join(__dirname, "lib/db.types.ts");
+export const dbFilePath = "./lib/db.types.ts";
 
 export const generateDbTypes = async () => {
   try {
@@ -21,11 +20,11 @@ export const generateDbTypes = async () => {
 };
 
 export const modifyDbTypes = () => {
-  // Read the contents of the db.types.ts file
+  //   // Read the contents of the db.types.ts file
   const contents = fs.readFileSync(dbFilePath, "utf8");
 
   // Remove the first 2 lines of the input text
-  const contentsWithoutFirstTwoLines = contents.split("\n").slice(2).join("\n");
+  const contentsWithoutFirstTwoLines = contents.split("\n").slice(1).join("\n");
 
   // Remove the last 2 lines of the input text
   const contentsWithoutLastTwoLines = contentsWithoutFirstTwoLines
@@ -33,7 +32,7 @@ export const modifyDbTypes = () => {
     .slice(0, -2)
     .join("\n");
 
-  // Overwrite the input file with the modified text
+  //   // Overwrite the input file with the modified text
   fs.writeFileSync(dbFilePath, contentsWithoutLastTwoLines, "utf8");
 };
 

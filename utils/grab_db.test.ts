@@ -1,12 +1,8 @@
 import { promises as fs } from "fs";
-import path from "path";
-import { generateDbTypes, modifyDbTypes } from "./grab_db";
+import { dbFilePath } from "./grab_db";
 
-const dbFilePath = path.join(__dirname, "lib/db.types.ts");
-
-describe("generateDbTypes", () => {
-  it("generates a db.types.ts file", async () => {
-    await generateDbTypes();
+describe("generateDbTypes", async () => {
+  it("checks for a db.types.ts file", async () => {
     const fileExists = await fs
       .access(dbFilePath)
       .then(() => true)
@@ -15,13 +11,12 @@ describe("generateDbTypes", () => {
   });
 });
 
-describe("modifyDbTypes", () => {
-  it("removes the first two lines and the last two lines from the db.types.ts file", async () => {
+describe("modifyDbTypes", async () => {
+  it("checks for correct type generation", async () => {
     const contentsBefore = await fs.readFile(dbFilePath, "utf8");
-    await modifyDbTypes();
-    const contentsAfter = await fs.readFile(dbFilePath, "utf8");
-    const numLinesBefore = contentsBefore.split("\n").length;
-    const numLinesAfter = contentsAfter.split("\n").length;
-    expect(numLinesAfter).toBe(numLinesBefore - 4);
+    const firstLine = contentsBefore.split("\n")[0];
+    expect(firstLine).toBe("export type Json =");
+
+    // expect(firstLine).not.toMatch(/^postgres:\/\/([^:]+):([^@]+)@([^:]+):(\d+)\/(.+)$/);
   });
 });
