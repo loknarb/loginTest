@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-extraneous-dependencies
 import dotenv from "dotenv";
 import fs from "fs";
 import { exec } from "child_process";
@@ -6,20 +7,18 @@ import { promisify } from "util";
 dotenv.config({ path: "./.env.local" });
 
 export const dbFilePath = "./lib/db.types.ts";
-
 export const generateDbTypes = async () => {
   try {
-    const { stdout, stderr } = await promisify(exec)(
+    await promisify(exec)(
       `yarn supabase gen types typescript --db-url postgres://postgres:${process.env.SUPABASE_DB_PW}@db.${process.env.SUPABASE_DB_URL}.supabase.co:6543/postgres > ${dbFilePath}`
     );
-    console.log("stdout:", stdout);
-    console.error("stderr:", stderr);
+    return true;
   } catch (err) {
-    console.error(err);
+    return false;
   }
 };
 
-export const modifyDbTypes = () => {
+const modifyDbTypes = () => {
   //   // Read the contents of the db.types.ts file
   const contents = fs.readFileSync(dbFilePath, "utf8");
 
@@ -36,9 +35,12 @@ export const modifyDbTypes = () => {
   fs.writeFileSync(dbFilePath, contentsWithoutLastTwoLines, "utf8");
 };
 
-const run = async () => {
-  await generateDbTypes();
-  modifyDbTypes();
-};
-
-run();
+if (require.main === module) {
+  const run = async () => {
+    const didItRun = await generateDbTypes();
+    if (didItRun) {
+      modifyDbTypes();
+    }
+  };
+  run();
+}

@@ -1,7 +1,7 @@
 import { promises as fs } from "fs";
 import { dbFilePath } from "./grab_db";
-
-describe("generateDbTypes", async () => {
+// export const dbFilePath = "./lib/db.types.ts";
+describe("generateDbTypes", () => {
   it("checks for a db.types.ts file", async () => {
     const fileExists = await fs
       .access(dbFilePath)
@@ -11,7 +11,7 @@ describe("generateDbTypes", async () => {
   });
 });
 
-describe("modifyDbTypes", async () => {
+describe("modifyDbTypes", () => {
   it("checks for correct type generation", async () => {
     const contentsBefore = await fs.readFile(dbFilePath, "utf8");
     const firstLine = contentsBefore.split("\n")[0];
