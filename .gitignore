@@ -26,6 +26,7 @@ yarn-error.log*
 .pnpm-debug.log*
 
 # local env files
+.env.local
 .env*.locale
 .env
 
@@ -38,5 +39,3 @@ next-env.d.ts
 
 # supabase generated files
 lib/db.types.ts
-lib/db.types.ts
-.env.local
