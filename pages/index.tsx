@@ -10,9 +10,8 @@ import { Database } from "../lib/db.types";
 const inter = Inter({ subsets: ["latin"] });
 
 const Home = () => {
-  // <Account session={session} />
   const [name, setName] = useState<string | null>("");
-  const [err, setErr] = useState<string | null>("");
+  const [error, setError] = useState<string | null>("");
   const session = useSession();
   const supabase = useSupabaseClient<Database>();
   const fetchFullName = useCallback(async () => {
@@ -21,14 +20,15 @@ const Home = () => {
       if (data && data.length > 0) {
         setName(data[0].full_name);
       }
-    } catch (error) {
-      setErr(`Error fetching full name:", ${error}`);
+    } catch (err) {
+      setError(`Error fetching full name:", ${err}`);
     }
   }, [supabase]);
   useEffect(() => {
     fetchFullName();
   }, [fetchFullName, supabase]);
 
+  // <Account session={session} />
   return (
     <>
       <Head>
@@ -37,6 +37,7 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      {error && <div className="error">{error}</div>}
       {!session ? (
         <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} theme="dark" />
       ) : (
