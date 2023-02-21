@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from "react";
 import { useUser, useSupabaseClient, Session } from "@supabase/auth-helpers-react";
 import { Database } from "../../lib/db.types";
+import Button from "./Button";
 
 type Profiles = Database["public"]["Tables"]["profiles"]["Row"];
 
@@ -116,9 +117,9 @@ export default function Account({ session }: { session: Session }) {
         </div>
 
         <div>
-          <button type="button" className="block button" onClick={() => supabase.auth.signOut()}>
+          <Button type="button" className="block button" onClick={() => supabase.auth.signOut()}>
             Sign Out
-          </button>
+          </Button>
         </div>
       </div>
     </>

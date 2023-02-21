@@ -39,7 +39,12 @@ const Home = () => {
       </Head>
       {error && <div className="error">{error}</div>}
       {!session ? (
-        <Auth supabaseClient={supabase} appearance={{ theme: ThemeSupa }} theme="dark" />
+        <Auth
+          supabaseClient={supabase}
+          appearance={{ theme: ThemeSupa }}
+          theme="dark"
+          providers={["google", "github"]}
+        />
       ) : (
         <main className={inter.className}>
           <Header />

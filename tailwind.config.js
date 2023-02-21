@@ -5,26 +5,6 @@ module.exports = {
     "./components/**/*.{html,ts,tsx}",
     "./app/**/*.{html,ts,tsx}",
   ],
-  daisyui: {
-    themes: [
-      {
-        mytheme: {
-          primary: "#99CED3",
-          secondary: "#5F6366",
-          accent: "#EDB5BF",
-          neutral: "#BBD0FF",
-          "base-100": "#FFFFFF",
-          "base-200": "#1c1d1f",
-          "base-300": "#30343c",
-          "base-content": "#e5e1fc",
-          info: "#3ABFF8",
-          success: "#36D399",
-          warning: "#FBBD23",
-          error: "#F87272",
-        },
-      },
-    ],
-  },
   theme: {
     screens: {
       phone: "480px",
@@ -38,7 +18,6 @@ module.exports = {
       wide: "0.025em",
       wider: "0.07em",
     },
-
     extend: {
       height: {
         "half-screen": "50vh",
@@ -46,5 +25,5 @@ module.exports = {
     },
   },
   // eslint-disable-next-line global-require
-  plugins: [require("daisyui"), require("@tailwindcss/line-clamp")],
+  plugins: [require("@tailwindcss/line-clamp")],
 };
