@@ -1,5 +1,7 @@
 import React from "react";
 
-export function Body() {
+const Body = () => {
   return <div className="h-screen bg-base-300" />;
-}
+};
+
+export default Body;

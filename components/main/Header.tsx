@@ -1,7 +1,7 @@
-import Image from "next/image";
 import React from "react";
+import Button from "./Button";
 
-export function Header() {
+const Header = () => {
   return (
     <div className="navbar px-6">
       <div className="flex-1">
@@ -9,7 +9,7 @@ export function Header() {
           Welcome Sebastien
         </a>
       </div>
-      <div className="flex-none">
+      {/* <div className="flex-none">
         <div className="dropdown dropdown-end">
           <div className="btn btn-ghost btn-circle">
             <div className="indicator">
@@ -18,8 +18,7 @@ export function Header() {
                 className="h-5 w-5"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
+                stroke="currentColor">
                 <path
                   strokeLinecap="round"
                   strokeLinejoin="round"
@@ -48,7 +47,9 @@ export function Header() {
               <Image
                 alt="provided by you for profile"
                 id="profile-picture"
-                src="../../public/people.jpg"
+                src="/../public/people.jpg"
+                width={40}
+                height={40}
               />
             </div>
           </div>
@@ -67,7 +68,10 @@ export function Header() {
             </li>
           </ul>
         </div>
-      </div>
+      </div> */}
+      <Button name="Login" />
+      <Button name="Logout" />
     </div>
   );
-}
+};
+export default Header;
