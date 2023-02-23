@@ -50,9 +50,12 @@
     "@supabase/auth-ui-react": "^0.2.8",
     "@supabase/supabase-js": "^2.8.0",
     "@tailwindcss/line-clamp": "^0.4.2",
+    "i18next": "^22.4.10",
     "next": "13.1.6",
+    "next-i18next": "^13.1.5",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "react-i18next": "^12.1.5",
     "zustand": "^4.3.3"
   }
 }
